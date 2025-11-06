@@ -53,8 +53,8 @@ Porušení pravidel bude vést k vyloučení ze soutěže. Všechna odeslaná ř
 
 ## Evaluace
 
-Evaluace v odevzdávacím systému probíhá na skrytých (validačních) datech. Trénovací data obsahují [zápasy](data/games.csv) a statistiky [jednotlivých hráčů](data/players.csv) ze sezón 1975/76-1998/99.
-Validační data obsahují zápasy ze sezón 1999/00-2004/05.
+Evaluace v odevzdávacím systému probíhá na skrytých (validačních) datech. Trénovací data obsahují [zápasy](data/games.csv) ze sezón 1989/90-2010/11.
+Validační data obsahují zápasy ze sezón 2011/12-2014/15.
 V první iteraci [evaluační smyčky](src/environment.py#L68) obdržíš jako [inkrement](problem_info.md#dataframe-inkrement%C3%A1ln%C3%ADch-dat) všechna trénovací data.
 
 V odevzdávacím systému budeš mít k dispozici pouze 1 cpu (1 vlákno) a 5 GB RAM. Současně může běžet pouze jedna evaluce tvého řešení.
