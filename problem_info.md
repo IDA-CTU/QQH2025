@@ -20,7 +20,7 @@ Váš sázkař je reprezentován třídou [`Model`](src/model.py) s metodou `pla
 
 ## Datové typy
 
-V metodě `place_bets` se v jednotlivých argumentech setkáte celkem se čtyřmi datovými typy - `summary` obsahující [Summary DataFrame](#summary-dataframe), `opps` obsahující [Opps DataFrame](#opps-dataframe) a `inc` složený z dvojice [Games DataFrame](#games-dataframe). Posledním pátým typem je odevzdávaný [Bets DataFrame](#bets-dataframe).
+V metodě `place_bets` se v jednotlivých argumentech setkáte celkem se čtyřmi datovými typy - `summary` obsahující [Summary DataFrame](#summary-dataframe), `opps` obsahující [Opps DataFrame](#opps-dataframe) a `inc` [Games DataFrame](#games-dataframe). Posledním pátým typem je odevzdávaný [Bets DataFrame](#bets-dataframe).
 
 ### Summary DataFrame
 
@@ -84,18 +84,18 @@ Sázkařské příležitosti obsahují zápasy hrané v nadcházejících dnech.
 
 
 ### Inkrementální data
-Inkrementální data obsahují výsledky a statistiky, které jste doposud neviděli. Tato data jsou složena ze dvou tabulek (DataFrames). [Games DataFrame](#games-dataframe) obsahující informace o parametrech odehraných zápasů a [Players DataFrame](#players-dataframe) obsahující přehled o výkonu jednotlivých hráčů v odehraných zápasech. Počítejte s tím, že první inkrement který uvidíte, bude obsahovat i zápasy staršího data (z předcházejících sezón). 
+Inkrementální data obsahují výsledky a statistiky, které jste doposud neviděli. [Games DataFrame](#games-dataframe) obsahuje informace o parametrech odehraných zápasů. Počítejte s tím, že první inkrement který uvidíte, bude obsahovat i zápasy staršího data (z předcházejících sezón). 
 
 #### Games DataFrame
 
-|   ID | Season |       Date | HID | AID |       Open | OddsH | OddsA | OddsD |     H |     A |     D | HS | AS | Special | H_PEN | A_PEN | H_MAJ | A_MAJ | H_PPG | A_PPG | H_SHG | A_SHG | H_SV | A_SV | H_PIM | A_PIM | H_SOG | A_SOG | H_BLK_S | A_BLK_S | H_HIT | A_HIT | H_BLK | A_BLK | H_FO | A_FO | H_P1 | A_P1 | H_P2 | A_P2 | H_P3 | A_P3 | H_OT | A_OT | H_SO | A_SO |
-| ---: | -----: | ---------: | --: | --: | ---------: | ----: | ----: | ----: | ----: | ----: | ----: | -: | -: | ------: | ----: | ----: | ----: | ----: | ----: | ----: | ----: | ----: | ---: | ---: | ----: | ----: | ----: | ----: | ------: | ------: | ----: | ----: | ----: | ----: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| 15 |   1993 | 1993-11-06 |  18 |   9 | 1993-11-05 |  1.35 |  2.35 |   0.0 | False |  True | False |  5 |  6 |     |     3 |     5 |     0 |     0 |     1 |     3 |     0 |     1 |   23 |   41 |     6 |    10 |    46 |    28 |      15 |       2 |    14 |    17 |     1 |    12 |   50 |   28 |    2 |    2 |    1 |    3 |    2 |    0 |      |      |      |      |
-| 16 |   1993 | 1993-11-06 |  22 |  20 | 1993-11-05 |  1.41 |  2.14 |   0.0 |  True | False | False |  6 |  3 |         |     5 |     5 |     0 |     0 |     1 |     2 |     0 |     0 |   36 |   27 |    10 |    10 |    33 |    39 |      10 |       6 |    11 |    15 |     6 |     8 |   34 |   33 |    2 |    1 |    1 |    2 |    3 |    0 |      |      |      |      |
-| 17 |   1993 | 1993-11-06 |  24 |   9 | 1993-11-05 |  1.37 |  2.28 |   0.0 | False |  True | False |  3 |  4 |         |     9 |    11 |     0 |     0 |     3 |     0 |     0 |     1 |   21 |   34 |    18 |    22 |    37 |    25 |       8 |       4 |    21 |    19 |     4 |     8 |   34 |   29 |    2 |    2 |    0 |    2 |    1 |    0 |      |      |      |      |
-| 18 |   1993 | 1993-11-06 |  10 |  18 | 1993-11-05 |  1.43 |  2.09 |   0.0 |  True | False | False |  4 |  2 |         |     2 |     4 |     0 |     0 |     1 |     0 |     0 |     0 |   31 |   15 |     4 |     8 |    19 |    33 |      10 |      11 |     9 |    11 |    11 |    10 |   30 |   41 |    3 |    0 |    0 |    1 |    1 |    1 |      |      |      |      |
-| 19 |   1993 | 1993-11-07 |   1 |   5 | 1993-11-06 |  1.44 |  2.08 |   0.0 | False |  True | False |  1 |  2 |     |     7 |     7 |     2 |     1 |     1 |     1 |     0 |     0 |   26 |   33 |    34 |    24 |    34 |    27 |      14 |      11 |    13 |     7 |    10 |    14 |   35 |   31 |    0 |    1 |    0 |    0 |    1 |    0 |      |      |      |      |
-| 20 |   1993 | 1993-11-07 |  15 |  19 | 1993-11-06 |  1.84 |  1.55 |   0.0 | False |  True | False |  2 |  6 |         |    15 |    14 |     3 |     3 |     1 |     2 |     0 |     0 |   32 |   26 |    60 |    58 |    28 |    38 |       6 |      10 |    34 |    19 |    10 |     5 |   43 |   30 |    0 |    3 |    1 |    1 |    1 |    2 |      |      |      |      |
+|   ID | Season |       Date | HID | AID | OddsH | OddsA | OddsD |     H |     A |     D | HS | AS | Special | H_PEN | A_PEN | H_MAJ | A_MAJ | H_PPG | A_PPG | H_SHG | A_SHG | H_SV | A_SV | H_PIM | A_PIM | H_SOG | A_SOG | H_BLK_S | A_BLK_S | H_HIT | A_HIT | H_BLK | A_BLK | H_FO | A_FO | H_P1 | A_P1 | H_P2 | A_P2 | H_P3 | A_P3 | H_OT | A_OT | H_SO | A_SO |
+| ---: | -----: | ---------: | --: | --: | ----: | ----: | ----: | ----: | ----: | ----: | -: | -: | ------: | ----: | ----: | ----: | ----: | ----: | ----: | ----: | ----: | ---: | ---: | ----: | ----: | ----: | ----: | ------: | ------: | ----: | ----: | ----: | ----: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| 15 |   1993 | 1993-11-06 |  18 |   9 | 1.35 |  2.35 |   0.0 | False |  True | False |  5 |  6 |     |     3 |     5 |     0 |     0 |     1 |     3 |     0 |     1 |   23 |   41 |     6 |    10 |    46 |    28 |      15 |       2 |    14 |    17 |     1 |    12 |   50 |   28 |    2 |    2 |    1 |    3 |    2 |    0 |      |      |      |      |
+| 16 |   1993 | 1993-11-06 |  22 |  20 | 1.41 |  2.14 |   0.0 |  True | False | False |  6 |  3 |         |     5 |     5 |     0 |     0 |     1 |     2 |     0 |     0 |   36 |   27 |    10 |    10 |    33 |    39 |      10 |       6 |    11 |    15 |     6 |     8 |   34 |   33 |    2 |    1 |    1 |    2 |    3 |    0 |      |      |      |      |
+| 17 |   1993 | 1993-11-06 |  24 |   9 | 1.37 |  2.28 |   0.0 | False |  True | False |  3 |  4 |         |     9 |    11 |     0 |     0 |     3 |     0 |     0 |     1 |   21 |   34 |    18 |    22 |    37 |    25 |       8 |       4 |    21 |    19 |     4 |     8 |   34 |   29 |    2 |    2 |    0 |    2 |    1 |    0 |      |      |      |      |
+| 18 |   1993 | 1993-11-06 |  10 |  18 | 1.43 |  2.09 |   0.0 |  True | False | False |  4 |  2 |         |     2 |     4 |     0 |     0 |     1 |     0 |     0 |     0 |   31 |   15 |     4 |     8 |    19 |    33 |      10 |      11 |     9 |    11 |    11 |    10 |   30 |   41 |    3 |    0 |    0 |    1 |    1 |    1 |      |      |      |      |
+| 19 |   1993 | 1993-11-07 |   1 |   5 | 1.44 |  2.08 |   0.0 | False |  True | False |  1 |  2 |     |     7 |     7 |     2 |     1 |     1 |     1 |     0 |     0 |   26 |   33 |    34 |    24 |    34 |    27 |      14 |      11 |    13 |     7 |    10 |    14 |   35 |   31 |    0 |    1 |    0 |    0 |    1 |    0 |      |      |      |      |
+| 20 |   1993 | 1993-11-07 |  15 |  19 | 1.84 |  1.55 |   0.0 | False |  True | False |  2 |  6 |         |    15 |    14 |     3 |     3 |     1 |     2 |     0 |     0 |   32 |   26 |    60 |    58 |    28 |    38 |       6 |      10 |    34 |    19 |    10 |     5 |   43 |   30 |    0 |    3 |    1 |    1 |    1 |    2 |      |      |      |      |
 
 
 <table> <tr> <td>
@@ -109,8 +109,6 @@ Inkrementální data obsahují výsledky a statistiky, které jste doposud nevid
 **HID** - Unikátní identifikátor domácího týmu
 
 **AID** - Unikátní identifikátor hostujícího týmu
-
-**Open** - Datum otevření kurzů (nebo kdy byly kurzy poprvé vypsány)
 
 **OddsH** - Kurz na výhru domácího týmu
 
