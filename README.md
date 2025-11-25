@@ -6,6 +6,21 @@ V tomto repozitáři najdeš vše potřebné k odladění tvého modelu, aby Tě
 
 Odevzdávací systém beží na webu [hyperion.felk.cvut.cz](http://hyperion.felk.cvut.cz/).
 
+## **Pozor nová úloha - Bookie Rookie**
+### Mezi ostřílené bookmakery vstoupil nový hráč. Teprve se učí a jeho kurzy nejsou tak odladěné, dokážeš toho využít?
+* `data/bookie_rookie_games.csv` obsahují trénovací data pro novou úlohu.
+* V nové úloze se mění pouze částečně data, počateční kapitál a s ním i minimální a maximální sázka.
+* Rookie bookmaker umožňuje sázet i na zápasy, kterým se ostřílený bookmaker raději vyhýbá.
+* Počáteční kapitál: 100
+* Minimální sázka: 1
+* Maximální sázka: 20
+* Struktura dat a vyhodnocovací smyčka zůtavají stejné jako v https://hyperion.felk.cvut.cz/problem/qqh25qual.
+* Úloha je dostupná na https://hyperion.felk.cvut.cz/problem/qqh25qual2 a body z ní se počítají do kvalifikace QQH2025.
+* K úloze je taktéž dostupná debug úloha https://hyperion.felk.cvut.cz/problem/qqh25debug2
+* Získané body se počítají do kvalifikace QQH2025
+
+### Neváhejte a sázejte i u nového bookmakera!
+
 ## Struktura repozitáře
 * `problem_info.md` obsahuje detailní [zadání](problem_info.md) úlohy včetně popisu dat, které doporučujeme důkladně pročíst než se pustíš do tvorby vlastního modelu.
 * `pyproject.toml` obsahuje `uv` prostředí jaké používá odevzdávací systém.
