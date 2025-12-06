@@ -5,7 +5,7 @@ from environment import Environment
 
 games = pd.read_csv("./data/games.csv", index_col=0, parse_dates=["Date", "Open"])
 
-env = Environment(games, Model(), init_bankroll=1000, min_bet=5, max_bet=100)
+env = Environment(games, Model(), init_bankroll=1000, min_bet=1, max_bet=250)
 
 evaluation = env.run()
 
